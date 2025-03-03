@@ -7,7 +7,7 @@ const ingredientSchema = z
   .max(20, "Ingredient must be less than 20 characters")
   .regex(/^[a-zA-Z\s]+$/, "Only letters and spaces are allowed");
 
-export async function searchIngredients(prevState: any, formData: FormData) {
+export async function searchIngredients(prevState: Record<string, unknown>, formData: FormData) {
   const ingredient = formData.get("ingredient") as string;
 
   const result = ingredientSchema.safeParse(ingredient);
