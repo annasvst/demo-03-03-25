@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { getSession } from "@auth0/nextjs-auth0";
+import Link from 'next/link';
+import { getSession } from '@auth0/nextjs-auth0';
 
 export const Navbar = async () => {
   const session = await getSession();
 
   const user = session?.user || null;
-  
+
   return (
     <nav>
       <ul className="flex gap-8 justify-end m-8">
