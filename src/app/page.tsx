@@ -1,13 +1,13 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Recipe } from "./types/recipe";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Recipe } from './types/recipe';
 
 export default async function Home() {
   const recipesResponse = await fetch(
-    "https://www.themealdb.com/api/json/v1/1/search.php?f=f",
+    'https://www.themealdb.com/api/json/v1/1/search.php?f=f'
   );
   if (!recipesResponse.ok) {
-    throw new Error("Failed to fetch data from the server");
+    throw new Error('Failed to fetch data from the server');
   }
 
   const recipeData = await recipesResponse.json();
@@ -39,7 +39,10 @@ export default async function Home() {
               </div>
 
               <div className="mt-4">
-                <span data-testid="category-badge" className="text-xs uppercase bg-gray-400 text-gray-100 text-sm py-2 px-4 rounded-full dark:border-gray-100 dark:border dark:bg-transparent">
+                <span
+                  data-testid="category-badge"
+                  className="text-xs uppercase bg-gray-400 text-gray-100 text-sm py-2 px-4 rounded-full dark:border-gray-100 dark:border dark:bg-transparent"
+                >
                   {recipe.strCategory}
                 </span>
               </div>

@@ -1,26 +1,30 @@
-"use client";
+'use client';
 
-import { Button, Field, Input, Label } from "@headlessui/react";
-import { saveRecipe } from "actions/recipe";
-import { useActionState } from "react";
-import { SaveRecipeActionResponse } from "types/recipe";
-import { CreatedRecipe } from "./CreatedRecipe";
+import { Button, Field, Input, Label } from '@headlessui/react';
+import { saveRecipe } from 'actions/recipe';
+import { useActionState } from 'react';
+import { SaveRecipeActionResponse } from 'types/recipe';
+import { CreatedRecipe } from './CreatedRecipe';
 
 const initialState: SaveRecipeActionResponse = {
   success: false,
-  message: "",
+  message: '',
 };
 
 export default function NewRecipeForm() {
   const [state, action, pending] = useActionState(saveRecipe, initialState);
-  const {strMeal, strInstructions, strMealThumb} = state?.inputs || {};
+  const { strMeal, strInstructions, strMealThumb } = state?.inputs || {};
 
   if (state.success)
     return (
       <>
         <h2>Successfully added</h2>
         {strMeal && strInstructions && strMealThumb && (
-          <CreatedRecipe title={strMeal} instructions={strInstructions} image={strMealThumb}/>
+          <CreatedRecipe
+            title={strMeal}
+            instructions={strInstructions}
+            image={strMealThumb}
+          />
         )}
       </>
     );
@@ -90,7 +94,7 @@ export default function NewRecipeForm() {
         disabled={pending}
         className="rounded bg-green-800 py-2 px-4 text-sm text-green-50 data-[hover]:bg-greeen-600"
       >
-        {pending ? "Saving..." : "Save recipe"}
+        {pending ? 'Saving...' : 'Save recipe'}
       </Button>
     </form>
   );
